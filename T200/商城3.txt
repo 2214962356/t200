@@ -1,0 +1,15 @@
+*** Settings ***
+Resource          小弟弟.txt
+Library           Selenium2Library
+
+*** Test Cases ***
+修改资料
+    [Tags]    xdd
+    tinyshop修改资料
+
+秒杀支付
+    秒杀支付
+
+添加收货地址
+    [Tags]    go
+    添加收货地址

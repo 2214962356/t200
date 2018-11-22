@@ -1,0 +1,26 @@
+*** Settings ***
+Force Tags        sc2
+Library           Selenium2Library
+
+*** Test Cases ***
+商城2
+    open browser    http://192.168.0.166/tinyshopV2.6_data/    Chrome
+    Maximize Browser Window
+    Click Element    Xpath=//*[@id="header"]/div[1]/div/div[2]/ul/li[7]/a[1]
+    Clear Element Text    Xpath=//*[@id="account"]
+    Input Text    Xpath=//*[@id="account"]    2214962356@qq.com
+    Clear Element Text    Xpath=//*[@id="main"]/div/div/form/ul/li[2]/input
+    Input Text    Xpath=//*[@id="main"]/div/div/form/ul/li[2]/input    liuhao1230
+    Click Element    Xpath=//*[@id="main"]/div/div/form/ul/li[4]/button
+    Input Text    Xpath=//*[@id="search-keyword"]    小米手机
+    Click Element    Xpath=//*[@id="search-form"]/button
+    Click Element    Xpath=//*[@id="main"]/div[2]/div/div/div[2]/dl/dd/ul/li[2]/dl/dt/a/img    #点击手机
+    Click Element    Xpath=//*[@id="product-intro"]/div[3]/div/dl[1]/dd/ul/li/span    #点击安卓系统
+    Click Element    Xpath=//*[@id="product-intro"]/div[3]/div/dl[2]/dd/ul/li[4]/span    #点击颜色
+    Click Element    Xpath=//*[@id="add-cart"]    #加入购物车
+    sleep    1
+    Click Element    xpath=//*[@id="shopping-cart"]
+    Click Element    xpath=//*[@id="shopping-cart"]/div/div/a    #去购物车结算
+    Click Element    Xpath=//*[@id="main"]/div[2]/div[2]/p/a[2]
+    Click Element    Xpath=//*[@id="main"]/div[2]/div/form/div[6]/p/input
+    Click Element    Xpath=//*[@id="main"]/div[2]/form/div[3]/p/input

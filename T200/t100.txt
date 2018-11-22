@@ -1,0 +1,64 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Test Cases ***
+ui1
+    open browser    https://www.baidu.com    chrome
+    maximize browser window    #最大化
+    sleep    3
+    Set Window Size    500    600
+    ${x}    ${y}    get window size
+    ${url}    get location
+    ${title}    get title
+    log    ${title}
+    log    ${url}
+    log    ${x}
+    log    ${y}
+    sleep    3
+    maximize browser window
+    input text    id=kw    cat
+    sleep    3
+    click element    id=su
+    reload page
+    go back
+    sleep    3
+    Close Browser
+
+demo01
+    Open Browser    https://www.baidu.com/    Chrome
+    Maximize Browser Window
+    Comment    Input Text    id=kw    UI自动化    #通过id定位
+    Click Button    id=su    #点击按钮
+    Comment    Click Element    link=新闻    #全部匹配
+    Click Element    partial link=新    #部分匹配
+    Sleep    2
+    Close Browser
+
+demo002
+    Open Browser    https://www.baidu.com/    Chrome
+    Maximize Browser Window
+    #绝对路径定位
+    Comment    Click Element    xpath=//*[@id="kw"]
+    #使用属性定位
+    Click Element
+    #使用单属性    xpath=//a[@href="http://news.baidu.com
+    #部分属性值定位
+    Click Element    Xpath=//a[stars-with(@name,'tj_)]
+    sleep    2
+    Close Browser
+    Click Element
+    #使用任意属性值匹配
+    Click Element    xpath=//*[@*，'tj'_trnews']    #使用统配符匹配 任意属性值
+    #使用test文本定位
+    Click Element    xpath=//a[test()=’新闻']
+    Click Element    xpath=//a[contains(test(),'新')]    #部分匹配
+
+demo003
+    Open Browser    https://www.baidu.com/    Chrome
+    Maximize Browser Window
+    #使用属性值定位
+    Comment    Click Element    css=a[name='tj_trnews']    #单属性，多属性加在后面
+    #使用部分属性定位
+    Click Element    css=a[name^='tj_trn']    #以什么开头
+    Click Element    css=a[name$='news']    #以什么结尾
+    Click Element    css=a[name*='ne']    #包含什么

@@ -1,0 +1,102 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+打开网页
+    Open Browser    http://192.168.0.166/tinyshopV2.6_data/    Chrome
+
+登录页面
+    Click Element    xpath=//*[@id="header"]/div[1]/div/div[2]/ul/li[7]/a[1]
+
+进行登录
+    Clear Element Text    xpath=//*[@id="account"]
+    Input Text    xpath=//*[@id="account"]    2214962356@qq.com
+    Clear Element Text    xpath=//*[@id="main"]/div/div/form/ul/li[2]/input
+    Input Text    xpath=//*[@id="main"]/div/div/form/ul/li[2]/input    liuhao1230
+    Click Element    xpath=//*[@id="main"]/div/div/form/ul/li[4]/button
+
+进入用户中心
+    Click Element    xpath=//*[@id="header"]/div[1]/div/div[2]/ul/li[1]/a
+
+个人资料
+    Click Element    xpath=//*[@id="widget_sub_navs"]/div/div/ul[3]/li[1]/a
+
+修改昵称
+    [Arguments]    ${name}
+    Clear Element Text    xpath=//*[@id="info-form"]/table/tbody/tr[3]/td[2]/input
+    Input Text    xpath=//*[@id="info-form"]/table/tbody/tr[3]/td[2]/input    ${name}
+
+修改姓名
+    [Arguments]    ${name}
+    Clear Element Text    xpath=//*[@id="info-form"]/table/tbody/tr[4]/td[2]/input
+    Input Text    xpath=//*[@id="info-form"]/table/tbody/tr[4]/td[2]/input    ${name}
+
+输入生日
+    [Arguments]    ${birthday}
+    Clear Element Text    xpath=//*[@id="info-form"]/table/tbody/tr[6]/td[2]/input
+    Input Text    xpath=//*[@id="info-form"]/table/tbody/tr[6]/td[2]/input    ${birthday}
+
+修改手机号码
+    [Arguments]    ${phone}
+    Clear Element Text    xpath=//*[@id="info-form"]/table/tbody/tr[7]/td[2]/input
+    Input Text    xpath=//*[@id="info-form"]/table/tbody/tr[7]/td[2]/input    ${phone}
+
+修改电话
+    [Arguments]    ${telephone}
+    Clear Element Text    xpath=//*[@id="info-form"]/table/tbody/tr[8]/td[2]/input
+    Input Text    xpath=//*[@id="info-form"]/table/tbody/tr[8]/td[2]/input    ${telephone}
+
+修改地址
+    Click Element    xpath=//*[@id="province"]/option[19]
+    Click Element    xpath=//*[@id="city"]/option[2]
+    Click Element    xpath=//*[@id="county"]/option[6]
+    Input Text    xpath=//*[@id="info-form"]/table/tbody/tr[10]/td[2]/textarea    湖南涉外经济学员
+
+保存个人信息
+    Mouse Down    xpath=//*[@id="info-form"]/table/tbody/tr[11]/td/input
+    Mouse Out    xpath=//*[@id="info-form"]/table/tbody/tr[11]/td/input
+    Click Element    xpath=//*[@id="info-form"]/table/tbody/tr[11]/td/input
+
+收货地址
+    Click Element    xpath=//*[@id="widget_sub_navs"]/div/div/ul[3]/li[4]/a
+
+点击添加地址
+    Click Element    xpath=//*[@id="address_other"]
+
+进入收货地址表单
+    Select Frame    xpath=/html/body/div[1]/div/table/tbody/tr[2]/td[2]/div/table/tbody/tr[2]/td[2]/div/iframe
+    Click Element    xpath=//*[@id="province"]/option[19]
+    Click Element    xpath=//*[@id="city"]/option[2]
+    Click Element    xpath=//*[@id="county"]/option[6]
+    Input Text    xpath=//*[@id="address-form"]/table/tbody/tr[2]/td[2]/input    410000
+    Input Text    xpath=//*[@id="address-form"]/table/tbody/tr[4]/td[2]/input    刘某某
+    input text    xpath=//*[@id="address-form"]/table/tbody/tr[5]/td[2]/input    17608453553
+    input text    xpath=//*[@id="address-form"]/table/tbody/tr[3]/td[2]/textarea    湖南涉外经济学院
+    Click Element    xpath=//*[@id="address-form"]/table/tbody/tr[8]/td/input
+
+进入限时抢购
+    Click Element    xpath=//*[@id="header"]/div[3]/ul/li[3]/a
+
+点击商品
+    Click Element    xpath=//*[@id="main"]/div/div/ul/li[1]/dl/dt/a/img
+    Click Element    xpath=//*[@id="product-intro"]/div[3]/dl[1]/dd/ul/li/span
+    Click Element    xpath=//*[@id="product-intro"]/div[3]/dl[2]/dd/ul/li[2]/span
+
+点击抢购
+    Click Element    xpath=//*[@id="buy-now"]
+
+提交订单
+    Click Element    xpath=//*[@id="main"]/div[2]/div/form/div[6]/p/input
+
+选择地址
+    Click Element    xpath=//*[@id="main"]/div[2]/div/form/div[1]/ul/li/div
+    sleep    3
+
+立即支付
+    Click Element    xpath=//*[@id="main"]/div[2]/form/div[3]/p/input
+
+关闭网页
+    Close Browser
+
+最大化
+    Maximize Browser Window

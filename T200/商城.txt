@@ -1,0 +1,25 @@
+*** Settings ***
+Force Tags        sc
+Library           Selenium2Library
+
+*** Test Cases ***
+商城
+    open browser    http://192.168.0.111/tinyshopV2.6_data/    chrome
+    Maximize Browser Window
+    Click Element    xpath=//*[@id="header"]/div[1]/div/div[2]/ul/li[7]/a[1]
+    #click element    #xpath=//*[@id="main"]/div/div/div/div[2]/a
+    Clear Element Text    xpath=//*[@id="account"]
+    Input Text    xpath=//*[@id="account"]    2214962356@qq.com
+    Clear Element Text    xpath=//*[@id="main"]/div/div/form/ul/li[2]/input
+    input text    xpath=//*[@id="main"]/div/div/form/ul/li[2]/input    liuhao1230
+    click element    xpath=//*[@id="main"]/div/div/form/ul/li[4]/button
+    input text    xpath=//*[@id="search-keyword"]    iphone
+    click element    xpath=//*[@id="search-form"]/button
+    click element    xpath=//*[@id="main"]/div[2]/div/div/div[2]/dl/dd/ul/li[1]/dl/dt/a/img
+    click element    xpath=//*[@id="product-intro"]/div[3]/div/dl[1]/dd/ul/li/span
+    sleep    1
+    click element    xpath=//*[@id="product-intro"]/div[3]/div/dl[2]/dd/ul/li[1]
+    click element    xpath=//*[@id="buy-now"]
+    click element    xpath=//*[@id="main"]/div[2]/div[2]/p/a[2]
+    click element    xpath=//*[@id="main"]/div[2]/div/form/div[6]/p/input
+    click element    xpath=//*[@id="main"]/div[2]/form/div[3]/p/input
